@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #widget {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background-color: #414141;
+            color: #fff;
+        }
+
+        #top-cover {
+            height: 40%;
+            width: 100%;
+            background-image: url("sunny.jpg");
+            background-size: cover;
+        }
+
+        .small_icon {
+            height: 3.5vw;
+        }
+
+        .forecast_prediction{
+            width: 24vw;
+            text-align: center;
+            position: absolute;
+            top: 140vw;
+            font-weight: 300;
+            font-size: 3vw;
+        } 
+
+        .weekday {
+            font-weight: 600;
+            font-size: 3.3vw;
+            margin-bottom: 3vw;
+        }
+
+        .weather_icon {
+            width: 11.5vw;
+            margin-bottom: 2vw;
+        }
+        .wind_icon {
+            height: 2.5vw;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="widget">
+        <div id="top-cover">
+            <div style="font-weight: bold; font-size: 15vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 5vw); width: auto;" id="month">MAR</div>
+            <div style="font-weight: bold; font-size: 16vw; text-align: left; padding-left: 2.5vw; width: auto;" id="month">29</div>           
+            <div style="font-weight: bold; font-size: 19vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 50vw;" ><span id="current_temp">78</span>° F</div>
+
+        </div>
+        <div id="bottom-cover">
+            <div id="week_day_today" style="font-weight: bold; font-size: 8vw; text-align: center; padding: 2vw 0 4vw 0;">Sunday</div>
+            <img src="Partly-cloudy.png" id="logo" style="width: 20vw; position: relative; left: 40vw;"/>
+            <div id="weather_today" style="font-weight: 600; font-size: 5.5vw; text-align: center; padding: 2vw 0 4vw 0;">Partly cloudy</div>
+
+            <div style="text-align: center; font-size: 3.5vw; padding-bottom: 2vw; font-weight: 300 ">High: <span id="today_high">94</span>°F; Low: <span id="today_low">52</span>°F</div>
+            <div style="text-align: center; font-size: 3.5vw; font-weight: 300; padding-bottom: 5vw;"><img src="Wind.png" class="small_icon" /> Wind: <span id="wind_today">12</span> mph</div>
+
+            <hr style="border-bottom: 0.05vw solid #545454;">
+
+
+
+            <div class="forecast_prediction">
+                <div id="day1_weekday" class="weekday">Mon</div>
+                <img src="Partly-cloudy.png" class="weather_icon" />
+                <div>↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
+                <div><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            </div>
+            <div class="forecast_prediction" style="left: 25.35vw;">
+                <div id="day2_weekday" class="weekday">Tue</div>
+                <img src="Partly-cloudy.png" class="weather_icon" />
+                <div>↑<span id="day2_high">94</span>F; ↓<span id="day2_low">52</span>F</div>
+                <div><img src="Wind.png" class="wind_icon "/><span id="day2_high"> 15</span> mph</div>
+            </div>
+            <div class="forecast_prediction" style="right: 25.35vw;">
+                <div id="day3_weekday" class="weekday">Wed</div>
+                <img src="Partly-cloudy.png" class="weather_icon" />
+                <div>↑<span id="day3_high">94</span>F; ↓<span id="day3_low">52</span>F</div>
+                <div><img src="Wind.png" class="wind_icon "/><span id="day3_high"> 46</span> mph</div>
+            </div>
+            <div class="forecast_prediction"  style="right: 0;">
+                <div id="day1_weekday" class="weekday">Thu</div>
+                <img src="Partly-cloudy.png" class="weather_icon" />
+                <div>↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
+                <div><img src="Wind.png" class="wind_icon "/><span id="day1_high"> 8</span> mph</div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -152,9 +152,10 @@
         }
         ?>
         <?php
-        date_default_timezone_set('America/New_York');
-        $month = date('M');
-        $date = date('d');
+        // gets current date and month
+        $date_time = new DateTime($data["current_weather"]["time"]);
+        $month = $date_time->format('M');
+        $date = $date_time->format('d');
         echo "<div id='top-cover' style='background-image: url($bg_image);background-size: cover;'>
                 <div style='font-weight: bold; font-size: 7vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 2vw); width: auto;'>$month</div>
                 <div style='font-weight: bold; font-size: 8vw; text-align: left; padding-left: 2.5vw; width: auto;'>$date</div>

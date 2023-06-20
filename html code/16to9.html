@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        #widget {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #414141;
+            color: #fff;
+        }
+
+        #top-cover {
+            height: 45%;
+            width: 100%;
+            background-image: url("sunny.jpg");
+            background-size: cover;
+        }
+
+        #bottom-cover {
+            display: grid;
+            grid-template-columns: 30vw 17.5vw 17.5vw 17.5vw 17.5vw;
+            text-align: center;
+
+        }
+
+        #bottom-cover div {
+            align-items: center;
+            justify-content: center;
+            padding-top: 2vw;
+        }
+
+        .weekday{
+            font-size: 2.4vw; 
+            font-weight: 600;
+            margin-top: 0.85vw;
+        }
+
+        .weather_icon {
+            width: 7vw;
+            margin: 0 auto;
+            margin-top: 1.8vw;
+            margin-bottom: 1.5vw;
+        }
+
+        .small_icon{
+            width: 2.4vw;
+        }
+        
+        .wind_icon{
+            width: 2.3vw;
+        }
+
+        .forecast_temp{
+            font-size: 1.7vw;
+            margin-top:0.8vw;
+        }
+
+        .forecast_wind{
+            font-size: 1.8vw;
+        }
+
+        hr{
+            position: absolute;
+            left: 0vw;
+            width: 100vw;
+            border: 0.05vw solid #545454;
+            z-index: 999999999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="widget">
+        <div id="top-cover">
+            <div style="font-weight: bold; font-size: 7vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 2vw); width: auto;" id="month">MAR</div>
+            <div style="font-weight: bold; font-size: 8vw; text-align: left; padding-left: 2.5vw; width: auto;" id="month">29</div>           
+            <div style="font-weight: bold; font-size: 11vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 2vw;" ><span id="current_temp">78</span>° F</div>
+
+        </div>
+        <div id="bottom-cover">
+            <!-- First row -->
+            <div id="weather_today" style="font-weight: bold; font-size: 3.7vw; text-align: center; ">Partly cloudy</div>
+            <div id="day1_weekday" class="weekday">Mon</div>
+            <div id="day2_weekday" class="weekday">Tue</div>
+            <div id="day3_weekday" class="weekday">Wed</div>
+            <div id="day4_weekday" class="weekday">Thu</div>
+            <hr style="top: 32vw;"/>
+            <!-- Second row -->
+            <div style="text-align: center; font-size: 2.3vw; padding-bottom: 2vw; font-weight: 400 ">High: <span id="today_high">94</span>°F; Low: <span id="today_low">52</span>°F</div>
+            <div class="forecast_temp">↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
+            <div  class="forecast_temp">↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
+            <div  class="forecast_temp">↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
+            <div  class="forecast_temp">↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
+            <hr style="top: 38vw;"/>
+            <!-- Third row -->
+            <img src="Partly-cloudy.png" class="weather_icon" />
+            <img src="Partly-cloudy.png" class="weather_icon" />
+            <img src="Partly-cloudy.png" class="weather_icon" />
+            <img src="Partly-cloudy.png" class="weather_icon" />
+            <img src="Partly-cloudy.png" class="weather_icon" />
+            <hr style="top: 48vw;"/>
+            <!-- Forth row -->
+            <div style="text-align: center; font-size: 2.3vw; font-weight: 400; "><img src="Wind.png" class="small_icon" /> Wind: <span id="wind_today">12</span> mph</div>
+            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+
+        </div>
+    </div>
+</body>
+
+</html>

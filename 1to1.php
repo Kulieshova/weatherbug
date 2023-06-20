@@ -35,14 +35,14 @@
 <body>
     <div id='widget'>
         <?php
-        // get date from user's system
-        date_default_timezone_set('America/New_York');
-        $month = date('M');
-        $date = date('d');
         // Call the API to get the forecast data
         $url = "https://api.open-meteo.com/v1/forecast?latitude=41.0145&longitude=-73.8726&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&timezone=America%2FNew_York";
         $json = file_get_contents($url);
         $data = json_decode($json, true);
+        // gets current date and month
+        $date_time = new DateTime($data["current_weather"]["time"]);
+        $month = $date_time->format('M');
+        $date = $date_time->format('d');
         // gets current data
         $current_temp = $data["current_weather"]["temperature"];
         $weather_now = $data["current_weather"]["weathercode"];

@@ -24,8 +24,6 @@
         #top-cover {
             height: 40%;
             width: 100%;
-            background-image: url('/sunny.jpg');
-            background-size: cover;
         }
 
         .small_icon {
@@ -75,153 +73,154 @@
 </head>
 
 <body>
-    <div id='widget'>
-        <div id='top-cover'>
-            <?php
-            $url = "https://api.open-meteo.com/v1/forecast?latitude=41.0145&longitude=-73.8726&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&timezone=America%2FNew_York";
-            $json = file_get_contents($url);
-            $data = json_decode($json, true);
-            // gets current data
-            $current_temp = $data["current_weather"]["temperature"];
-            $weather_now = $data["current_weather"]["weathercode"];
-            $lowest_temp_today = $data["daily"]["temperature_2m_min"][0];
-            $highest_temp_today = $data["daily"]["temperature_2m_max"][0];
-            $wind_today = $data["current_weather"]["windspeed"];
+    <?php
+    $url = "https://api.open-meteo.com/v1/forecast?latitude=41.0145&longitude=-73.8726&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&timezone=America%2FNew_York";
+    $json = file_get_contents($url);
+    $data = json_decode($json, true);
+    // gets current data
+    $current_temp = $data["current_weather"]["temperature"];
+    $weather_now = $data["current_weather"]["weathercode"];
+    $lowest_temp_today = $data["daily"]["temperature_2m_min"][0];
+    $highest_temp_today = $data["daily"]["temperature_2m_max"][0];
+    $wind_today = $data["current_weather"]["windspeed"];
 
-            // reads weathercode and displays according icon and description
-            if ($weather_now == 0) {
-                $picture = "sunny";
-                $bg_image = "../backgrounds/sunny.jpg";
-                $weather_decr = "Clear sky";
-            } else if ($weather_now == 1) {
-                $picture = "partly_cloudy";
-                $bg_image = "../backgrounds/sunny.jpg";
-                $weather_decr = "Mainly clear";
-            } else if ($weather_now == 2) {
-                $picture = "partly_clear";
-                $bg_image = "../backgrounds/cloudy.jpg";
-                $weather_decr = "Partly cloudy";
-            } else if ($weather_now == 3) {
-                $picture = "cloudy";
-                $bg_image = "../backgrounds/cloudy.jpg";
-                $weather_decr = "Overcast";
-            } else if ($weather_now == 45 || $weather_now == 48) {
-                $picture = "fog";
-                $bg_image = "../backgrounds/cloudy.jpg";
-                $weather_decr = "Foggy";
-            } else if ($weather_now == 51 || $weather_now == 53 || $weather_now == 55) {
-                $picture = "drizzle";
-                $bg_image = "../backgrounds/rainy.jpg";
-                $weather_decr = "Drizzle";
-            } else if ($weather_now == 56 || $weather_now == 57) {
-                $picture = "freezing_rain";
-                $bg_image = "../backgrounds/rainy.jpg";
-                $weather_decr = "Freeing drizzle";
-            } else if ($weather_now == 61 || $weather_now == 63 || $weather_now == 65) {
-                $picture = "rain";
-                $bg_image = "../backgrounds/rainy.jpg";
-                $weather_decr = "Rainy";
-            } else if ($weather_now == 66 || $weather_now == 67) {
-                $picture = "freezing_rain";
-                $bg_image = "../backgrounds/rainy.jpg";
-                $weather_decr = "Freezing rain";
-            } else if ($weather_now == 71 || $weather_now == 73 || $weather_now == 75) {
-                $picture = "snow";
-                $bg_image = "../backgrounds/snowy.jpg";
-                $weather_decr = "Snow fall";
-            } else if ($weather_now == 77) {
-                $picture = "snow_grains";
-                $bg_image = "../backgrounds/snowy.jpg";
-                $weather_decr = "Snow grains";
-            } else if ($weather_now == 80 || $weather_now == 81 || $weather_now == 82) {
-                $picture = "rain";
-                $bg_image = "../backgrounds/rainy.jpg";
-                $weather_decr = "Rain showers";
-            } else if ($weather_now == 85 || $weather_now == 86) {
-                $picture = "snow";
-                $bg_image = "../backgrounds/snowy.jpg";
-                $weather_decr = "Snow showers";
-            } else if ($weather_now == 95 || $weather_now == 96 || $weather_now == 99) {
-                $picture = "thunderstorm";
-                $bg_image = "../backgrounds/rainy.jpg";
-                $weather_decr = "Thunderstorm";
-            }
-            ?>
-            <?php
-            // gets system's date
-            date_default_timezone_set('America/New_York');
-            $month = date('M');
-            $date = date('d');
-            echo "<div style='font-weight: bold; font-size: 15vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 5vw); width: auto;' id='month'>$month</div>";
-            echo "<div style='font-weight: bold; font-size: 16vw; text-align: left; padding-left: 2.5vw; width: auto;' id='month'>$date</div>";
-            echo "<div style='font-weight: bold; font-size: 19vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 50vw;' ><span id='current_temp'>$current_temp</span>° F</div>";
-            ?>
-        </div>
+    // reads weathercode and displays according icon and description
+    if ($weather_now == 0) {
+        $picture = "sunny";
+        $bg_image = "../backgrounds/sunny.jpg";
+        $weather_decr = "Clear sky";
+    } else if ($weather_now == 1) {
+        $picture = "partly_cloudy";
+        $bg_image = "../backgrounds/sunny.jpg";
+        $weather_decr = "Mainly clear";
+    } else if ($weather_now == 2) {
+        $picture = "partly_clear";
+        $bg_image = "../backgrounds/cloudy.jpg";
+        $weather_decr = "Partly cloudy";
+    } else if ($weather_now == 3) {
+        $picture = "cloudy";
+        $bg_image = "../backgrounds/cloudy.jpg";
+        $weather_decr = "Overcast";
+    } else if ($weather_now == 45 || $weather_now == 48) {
+        $picture = "fog";
+        $bg_image = "../backgrounds/cloudy.jpg";
+        $weather_decr = "Foggy";
+    } else if ($weather_now == 51 || $weather_now == 53 || $weather_now == 55) {
+        $picture = "drizzle";
+        $bg_image = "../backgrounds/rainy.jpg";
+        $weather_decr = "Drizzle";
+    } else if ($weather_now == 56 || $weather_now == 57) {
+        $picture = "freezing_rain";
+        $bg_image = "../backgrounds/rainy.jpg";
+        $weather_decr = "Freeing drizzle";
+    } else if ($weather_now == 61 || $weather_now == 63 || $weather_now == 65) {
+        $picture = "rain";
+        $bg_image = "../backgrounds/rainy.jpg";
+        $weather_decr = "Rainy";
+    } else if ($weather_now == 66 || $weather_now == 67) {
+        $picture = "freezing_rain";
+        $bg_image = "../backgrounds/rainy.jpg";
+        $weather_decr = "Freezing rain";
+    } else if ($weather_now == 71 || $weather_now == 73 || $weather_now == 75) {
+        $picture = "snow";
+        $bg_image = "../backgrounds/snowy.jpg";
+        $weather_decr = "Snow fall";
+    } else if ($weather_now == 77) {
+        $picture = "snow_grains";
+        $bg_image = "../backgrounds/snowy.jpg";
+        $weather_decr = "Snow grains";
+    } else if ($weather_now == 80 || $weather_now == 81 || $weather_now == 82) {
+        $picture = "rain";
+        $bg_image = "../backgrounds/rainy.jpg";
+        $weather_decr = "Rain showers";
+    } else if ($weather_now == 85 || $weather_now == 86) {
+        $picture = "snow";
+        $bg_image = "../backgrounds/snowy.jpg";
+        $weather_decr = "Snow showers";
+    } else if ($weather_now == 95 || $weather_now == 96 || $weather_now == 99) {
+        $picture = "thunderstorm";
+        $bg_image = "../backgrounds/rainy.jpg";
+        $weather_decr = "Thunderstorm";
+    }
+    ?>
+    <?php
+    echo " <div id='widget'>
+        <div id='top-cover' style='background-image: url($bg_image); background-size: cover;'>";
 
-        <div id='bottom-cover'>
-            <?php
-            $date_today = $data["daily"]["time"][0];
-            $day_of_the_week_today = date("D", strtotime($date));
-            echo "<div id='week_day_today' style='font-weight: bold; font-size: 8vw; text-align: center; padding: 2vw 0 4vw 0;'>$day_of_the_week_today</div>";
-            echo "<img src='../weather_icons/$picture.png' id='logo' style='width: 20vw; position: relative; left: 40vw;' />";
-            echo "<div id='weather_today' style='font-weight: 600; font-size: 5.5vw; text-align: center; padding: 2vw 0 4vw 0;'>$weather_decr</div>";
+    // gets current date and month
+    $date_time = new DateTime($data["current_weather"]["time"]);
+    $month = $date_time->format('M');
+    $date = $date_time->format('d');
+    echo "<div style='font-weight: bold; font-size: 15vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 5vw); width: auto;' id='month'>$month</div>";
+    echo "<div style='font-weight: bold; font-size: 16vw; text-align: left; padding-left: 2.5vw; width: auto;' id='month'>$date</div>";
+    echo "<div style='font-weight: bold; font-size: 19vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 50vw;' ><span id='current_temp'>$current_temp</span>° F</div>";
+    ?>
+    </div>
 
-            echo "<div style='text-align: center; font-size: 3.5vw; padding-bottom: 2vw; font-weight: 300 '>High: <span>$highest_temp_today</span>°F; Low: <span>$lowest_temp_today</span>°F</div>
+    <div id='bottom-cover'>
+        <?php
+        $date_today = $data["daily"]["time"][0];
+        $day_of_the_week_today = date("D", strtotime($date));
+        echo "<div id='week_day_today' style='font-weight: bold; font-size: 8vw; text-align: center; padding: 2vw 0 4vw 0;'>$day_of_the_week_today</div>";
+        echo "<img src='../weather_icons/$picture.png' id='logo' style='width: 20vw; position: relative; left: 40vw;' />";
+        echo "<div id='weather_today' style='font-weight: 600; font-size: 5.5vw; text-align: center; padding: 2vw 0 4vw 0;'>$weather_decr</div>";
+
+        echo "<div style='text-align: center; font-size: 3.5vw; padding-bottom: 2vw; font-weight: 300 '>High: <span>$highest_temp_today</span>°F; Low: <span>$lowest_temp_today</span>°F</div>
     <div style='text-align: center; font-size: 3.5vw; font-weight: 300; padding-bottom: 5vw;'><img
             src='../weather_icons/Wind.png' class='small_icon' /> Wind: <span>$wind_today</span> mph</div>"
-                ?>
-            <hr style='border-bottom: 0.05vw solid #545454;'>
+            ?>
+        <hr style='border-bottom: 0.05vw solid #545454;'>
 
-            <?php
-            // loops 4 time to print 4 days of forecast
-            for ($i = 1; $i <= 4; $i++) {
-                $weather_forecast = $data["daily"]["weathercode"][$i];
-                $lowest_temp_forecast = $data["daily"]["temperature_2m_min"][$i];
-                $highest_temp_forecast = $data["daily"]["temperature_2m_max"][$i];
-                $wind_forecast = $data["daily"]["windspeed_10m_max"][$i];
-                $date = $data["daily"]["time"][$i];
-                $day_of_the_week = date("D", strtotime($date));
+        <?php
+        // loops 4 time to print 4 days of forecast
+        for ($i = 1; $i <= 4; $i++) {
+            $weather_forecast = $data["daily"]["weathercode"][$i];
+            $lowest_temp_forecast = $data["daily"]["temperature_2m_min"][$i];
+            $highest_temp_forecast = $data["daily"]["temperature_2m_max"][$i];
+            $wind_forecast = $data["daily"]["windspeed_10m_max"][$i];
+            $date = $data["daily"]["time"][$i];
+            $day_of_the_week = date("D", strtotime($date));
 
-                // reads weathercode and displays according icon
-                if ($weather_forecast == 0) {
-                    $picture_forecast = "sunny";
-                } else if ($weather_forecast == 1) {
-                    $picture_forecast = "partly_cloudy";
-                } else if ($weather_forecast == 2) {
-                    $picture_forecast = "partly_clear";
-                } else if ($weather_forecast == 3) {
-                    $picture_forecast = "cloudy";
-                } else if ($weather_forecast == 45 || $weather_now == 48) {
-                    $picture_forecast = "fog";
-                } else if ($weather_forecast == 51 || $weather_now == 53 || $weather_now == 55) {
-                    $picture_forecast = "drizzle";
-                } else if ($weather_forecast == 56 || $weather_now == 57) {
-                    $picture_forecast = "freezing_rain";
-                } else if ($weather_forecast == 61 || $weather_now == 63 || $weather_now == 65) {
-                    $picture_forecast = "rain";
-                } else if ($weather_forecast == 66 || $weather_now == 67) {
-                    $picture_forecast = "freezing_rain";
-                } else if ($weather_forecast == 71 || $weather_now == 73 || $weather_now == 75) {
-                    $picture_forecast = "snow";
-                } else if ($weather_forecast == 77) {
-                    $picture_forecast = "snow_grains";
-                } else if ($weather_forecast == 80 || $weather_now == 81 || $weather_now == 82) {
-                    $picture_forecast = "rain";
-                } else if ($weather_forecast == 85 || $weather_now == 86) {
-                    $picture_forecast = "snow";
-                } else if ($weather_forecast == 95 || $weather_now == 96 || $weather_now == 99) {
-                    $picture_forecast = "thunderstorm";
-                }
+            // reads weathercode and displays according icon
+            if ($weather_forecast == 0) {
+                $picture_forecast = "sunny";
+            } else if ($weather_forecast == 1) {
+                $picture_forecast = "partly_cloudy";
+            } else if ($weather_forecast == 2) {
+                $picture_forecast = "partly_clear";
+            } else if ($weather_forecast == 3) {
+                $picture_forecast = "cloudy";
+            } else if ($weather_forecast == 45 || $weather_now == 48) {
+                $picture_forecast = "fog";
+            } else if ($weather_forecast == 51 || $weather_now == 53 || $weather_now == 55) {
+                $picture_forecast = "drizzle";
+            } else if ($weather_forecast == 56 || $weather_now == 57) {
+                $picture_forecast = "freezing_rain";
+            } else if ($weather_forecast == 61 || $weather_now == 63 || $weather_now == 65) {
+                $picture_forecast = "rain";
+            } else if ($weather_forecast == 66 || $weather_now == 67) {
+                $picture_forecast = "freezing_rain";
+            } else if ($weather_forecast == 71 || $weather_now == 73 || $weather_now == 75) {
+                $picture_forecast = "snow";
+            } else if ($weather_forecast == 77) {
+                $picture_forecast = "snow_grains";
+            } else if ($weather_forecast == 80 || $weather_now == 81 || $weather_now == 82) {
+                $picture_forecast = "rain";
+            } else if ($weather_forecast == 85 || $weather_now == 86) {
+                $picture_forecast = "snow";
+            } else if ($weather_forecast == 95 || $weather_now == 96 || $weather_now == 99) {
+                $picture_forecast = "thunderstorm";
+            }
 
-                echo " <div class='forecast_prediction' id='forecast_$i'>
+            echo " <div class='forecast_prediction' id='forecast_$i'>
         <div class='weekday'>$day_of_the_week</div>
         <img src='../weather_icons/$picture_forecast.png' class='weather_icon'/>
         <div>↑<span >$highest_temp_forecast</span>F; ↓<span>$lowest_temp_forecast</span>F</div>
         <div><img src='../weather_icons/Wind.png' class='wind_icon'/><span> $wind_forecast</span> mph</div>
     </div>";
-            }
-            ?>
-        </div>
+        }
+        ?>
+    </div>
     </div>
 </body>
 
