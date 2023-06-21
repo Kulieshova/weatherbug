@@ -163,12 +163,17 @@
         $data_alerts = json_decode($json_alerts, true);
         $alert = $data_alerts["alerts"];
         $warning = "";
+        $warning_count = 0;
 
         // Checks if the API has any alerts, and then gets just the most urgent warnings
         if (!empty($alert)) {
             for ($i = 0; $i < count($alert); $i++) {
                 if ($alert[$i]["severity"] == "Warning") {
-                    $warning .= $warning . $alert[$i]["title"];
+                    // Makes sure that duplicate warnings will not be displayed
+                    if($warning_count==0){
+                        $warning .= $warning . $alert[$i]["title"];
+                    }
+                    $warning_count++;
                 }
             }
         }
