@@ -5,6 +5,8 @@
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js'></script>
+    <title>Weatherbug forecast</title>
+
     <style>
         body {
             padding: 0;
@@ -85,19 +87,6 @@
                     This is weather alert sent by Nataliia Kulieshova from Colorado Spring, CO at 4:43 PM CST
                 </span>
             </div>
-            <script>
-                $(document).ready(function () {
-                    // 3.5856573705179287vw -> a magic number -> min height for the alert
-                    var alert_height = $('#alert').height();
-                    var screen_width = $(window).width();
-                    // alert height in vw
-                    alert_height = alert_height / screen_width * 100;
-                    var new_position = 69 - (alert_height - 3.5856573705179287) / 2;
-                    $('#alert').css({ 'top': (new_position - alert_height / 2) + 'vw' });
-                    window.console && console.log(alert_height);
-                    $('#current_temperature').css({ 'top': 51 - alert_height + 'vw' });
-                });
-            </script>
         </div>
         <div id='bottom-cover'>
             <div id='weather_decription'
@@ -109,5 +98,17 @@
         </div>
     </div>
 </body>
-
+<script>
+    $(document).ready(function () {
+        // 3.5856573705179287vw -> a magic number -> min height for the alert
+        var alert_height = $('#alert').height();
+        var screen_width = $(window).width();
+        // alert height in vw
+        alert_height = alert_height / screen_width * 100;
+        var new_position = 69 - (alert_height - 3.5856573705179287) / 2;
+        $('#alert').css({ 'top': (new_position - alert_height / 2) + 'vw' });
+        window.console && console.log(alert_height);
+        $('#current_temperature').css({ 'top': 51 - alert_height + 'vw' });
+    });
+</script>
 </html>

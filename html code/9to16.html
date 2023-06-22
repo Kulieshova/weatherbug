@@ -4,6 +4,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js'></script>
+    <title>Weatherbug forecast</title>
     <style>
         body {
             padding: 0;
@@ -21,7 +23,7 @@
         #top-cover {
             height: 40%;
             width: 100%;
-            background-image: url("sunny.jpg");
+            background-image: url("../backgrounds/sunny.jpg");
             background-size: cover;
         }
 
@@ -51,6 +53,37 @@
         .wind_icon {
             height: 2.5vw;
         }
+        #alert {
+            width: 84vw;
+            height: auto;
+            background-color: white;
+            color: red;
+            font-family: 'Inter', sans-serif;
+            border-radius: 30px;
+            position: absolute;
+            right: 3vw;
+            font-size: 2.3vw;
+            padding: 1vw 3vw 1vw 6vw;
+        }
+
+        #alert_icon {
+            width: 3vw;
+            position: relative;
+            margin-left: -4.6vw;
+        }
+
+        #alert {
+            display: flex;
+            align-items: center;
+        }
+
+        #alert_icon {
+            margin-right: 10px;
+        }
+
+        #alert span {
+            flex: 1;
+        }
 
     </style>
 </head>
@@ -60,16 +93,22 @@
         <div id="top-cover">
             <div style="font-weight: bold; font-size: 15vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 5vw); width: auto;" id="month">MAR</div>
             <div style="font-weight: bold; font-size: 16vw; text-align: left; padding-left: 2.5vw; width: auto;" id="month">29</div>           
-            <div style="font-weight: bold; font-size: 19vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 50vw;" ><span id="current_temp">78</span>° F</div>
+            <div style="font-weight: bold; font-size: 19vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 50vw;" id="current_temperature" ><span id="current_temp">78</span>° F</div>
+            <div id='alert' class='active'>
+                <img src='../weather_icons/bell.png' id='alert_icon' />
+                <span>
+                    This is weather alert sent by Nataliia Kulieshova from Colorado Spring, CO at 4:43 PM CST
+                </span>
+            </div>
 
         </div>
         <div id="bottom-cover">
             <div id="week_day_today" style="font-weight: bold; font-size: 8vw; text-align: center; padding: 2vw 0 4vw 0;">Sunday</div>
-            <img src="Partly-cloudy.png" id="logo" style="width: 20vw; position: relative; left: 40vw;"/>
+            <img src="../weather_icons/partly_cloudy.png" id="logo" style="width: 20vw; position: relative; left: 40vw;"/>
             <div id="weather_today" style="font-weight: 600; font-size: 5.5vw; text-align: center; padding: 2vw 0 4vw 0;">Partly cloudy</div>
 
             <div style="text-align: center; font-size: 3.5vw; padding-bottom: 2vw; font-weight: 300 ">High: <span id="today_high">94</span>°F; Low: <span id="today_low">52</span>°F</div>
-            <div style="text-align: center; font-size: 3.5vw; font-weight: 300; padding-bottom: 5vw;"><img src="Wind.png" class="small_icon" /> Wind: <span id="wind_today">12</span> mph</div>
+            <div style="text-align: center; font-size: 3.5vw; font-weight: 300; padding-bottom: 5vw;"><img src="../weather_icons/Wind.png" class="small_icon" /> Wind: <span id="wind_today">12</span> mph</div>
 
             <hr style="border-bottom: 0.05vw solid #545454;">
 
@@ -77,32 +116,44 @@
 
             <div class="forecast_prediction">
                 <div id="day1_weekday" class="weekday">Mon</div>
-                <img src="Partly-cloudy.png" class="weather_icon" />
+                <img src="../weather_icons/fog.png" class="weather_icon" />
                 <div>↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
-                <div><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+                <div><img src="../weather_icons/Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
             </div>
             <div class="forecast_prediction" style="left: 25.35vw;">
                 <div id="day2_weekday" class="weekday">Tue</div>
-                <img src="Partly-cloudy.png" class="weather_icon" />
+                <img src="../weather_icons/partly_clear.png" class="weather_icon" />
                 <div>↑<span id="day2_high">94</span>F; ↓<span id="day2_low">52</span>F</div>
-                <div><img src="Wind.png" class="wind_icon "/><span id="day2_high"> 15</span> mph</div>
+                <div><img src="../weather_icons/../weather_icons/Wind.png" class="wind_icon "/><span id="day2_high"> 15</span> mph</div>
             </div>
             <div class="forecast_prediction" style="right: 25.35vw;">
                 <div id="day3_weekday" class="weekday">Wed</div>
-                <img src="Partly-cloudy.png" class="weather_icon" />
+                <img src="../weather_icons/partly_cloudy.png" class="weather_icon" />
                 <div>↑<span id="day3_high">94</span>F; ↓<span id="day3_low">52</span>F</div>
-                <div><img src="Wind.png" class="wind_icon "/><span id="day3_high"> 46</span> mph</div>
+                <div><img src="../weather_icons/Wind.png" class="wind_icon "/><span id="day3_high"> 46</span> mph</div>
             </div>
             <div class="forecast_prediction"  style="right: 0;">
                 <div id="day1_weekday" class="weekday">Thu</div>
-                <img src="Partly-cloudy.png" class="weather_icon" />
+                <img src="../weather_icons/snow.png" class="weather_icon" />
                 <div>↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
-                <div><img src="Wind.png" class="wind_icon "/><span id="day1_high"> 8</span> mph</div>
+                <div><img src="../weather_icons/Wind.png" class="wind_icon "/><span id="day1_high"> 8</span> mph</div>
             </div>
 
 
         </div>
     </div>
 </body>
-
+<script>
+    $(document).ready(function () {
+        // 3.5856573705179287vw -> a magic number -> min height for the alert
+        var alert_height = $('#alert').height();
+        var screen_width = $(window).width();
+        // alert height in vw
+        alert_height = alert_height / screen_width * 100;
+        var new_position = 65 - (alert_height - 3.5856573705179287) / 2;
+        $('#alert').css({ 'top': (new_position - alert_height / 2) + 'vw' });
+        window.console && console.log(alert_height);
+        $('#current_temperature').css({ 'top': 47 - alert_height + 'vw' });
+    });
+</script>
 </html>

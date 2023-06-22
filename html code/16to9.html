@@ -4,6 +4,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js'></script>
+    <title>Weatherbug forecast</title>
+
     <style>
         body {
             padding: 0;
@@ -22,7 +25,7 @@
         #top-cover {
             height: 45%;
             width: 100%;
-            background-image: url("sunny.jpg");
+            background-image: url("../backgrounds/sunny.jpg");
             background-size: cover;
         }
 
@@ -35,7 +38,7 @@
 
         #bottom-cover div {
             align-items: center;
-            justify-content: center;
+            justify_content: center;
             padding-top: 2vw;
         }
 
@@ -76,6 +79,40 @@
             border: 0.05vw solid #545454;
             z-index: 999999999;
         }
+
+        #alert {
+            width: 50vw;
+            height: auto;
+            background-color: white;
+            color: red;
+            font-family: 'Inter', sans-serif;
+            border-radius: 30px;
+            position: absolute;
+            right: 2.5vw;
+            font-size: 1.2vw;
+            padding: 0.5vw 0.4vw 0.5vw 5.5vw;
+            top: 13.5vw;
+        }
+
+        #alert_icon {
+            width: 1.45vw;
+            position: relative;
+            margin-left: -4.6vw;
+        }
+
+        #alert {
+            display: flex;
+            align-items: center;
+        }
+
+        #alert_icon {
+            margin-right: 10px;
+        }
+
+        #alert span {
+            flex: 1;
+        }
+
     </style>
 </head>
 
@@ -85,6 +122,12 @@
             <div style="font-weight: bold; font-size: 7vw; text-align: left; padding: 3vw 2.5vw 0vw; margin-bottom: calc(-1 * 2vw); width: auto;" id="month">MAR</div>
             <div style="font-weight: bold; font-size: 8vw; text-align: left; padding-left: 2.5vw; width: auto;" id="month">29</div>           
             <div style="font-weight: bold; font-size: 11vw; text-align: left; padding-left: 2.5vw; width: auto; position: absolute; right: 2.5vw; top: 2vw;" ><span id="current_temp">78</span>° F</div>
+            <div id='alert' class='active'>
+                <img src='../weather_icons/bell.png' id='alert_icon' />
+                <span>
+                    This is weather alert sent by Nataliia Kulieshova from Colorado Spring, CO at 4:43 PM CST
+                </span>
+            </div>
 
         </div>
         <div id="bottom-cover">
@@ -103,18 +146,18 @@
             <div  class="forecast_temp">↑<span id="day1_high">94</span>F; ↓<span id="day1_low">52</span>F</div>
             <hr style="top: 38vw;"/>
             <!-- Third row -->
-            <img src="Partly-cloudy.png" class="weather_icon" />
-            <img src="Partly-cloudy.png" class="weather_icon" />
-            <img src="Partly-cloudy.png" class="weather_icon" />
-            <img src="Partly-cloudy.png" class="weather_icon" />
-            <img src="Partly-cloudy.png" class="weather_icon" />
+            <img src="../weather_icons/partly_cloudy.png" class="weather_icon" />
+            <img src="../weather_icons/partly_cloudy.png" class="weather_icon" />
+            <img src="../weather_icons/partly_cloudy.png" class="weather_icon" />
+            <img src="../weather_icons/partly_cloudy.png" class="weather_icon" />
+            <img src="../weather_icons/partly_cloudy.png" class="weather_icon" />
             <hr style="top: 48vw;"/>
             <!-- Forth row -->
-            <div style="text-align: center; font-size: 2.3vw; font-weight: 400; "><img src="Wind.png" class="small_icon" /> Wind: <span id="wind_today">12</span> mph</div>
-            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
-            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
-            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
-            <div class="forecast_wind"><img src="Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div style="text-align: center; font-size: 2.3vw; font-weight: 400; "><img src="../weather_icons/Wind.png" class="small_icon" /> Wind: <span id="wind_today">12</span> mph</div>
+            <div class="forecast_wind"><img src="../weather_icons/Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div class="forecast_wind"><img src="../weather_icons/Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div class="forecast_wind"><img src="../weather_icons/Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
+            <div class="forecast_wind"><img src="../weather_icons/Wind.png" class=" wind_icon"/><span id="day1_high"> 10</span> mph</div>
 
         </div>
     </div>
